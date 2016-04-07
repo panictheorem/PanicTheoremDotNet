@@ -1,0 +1,22 @@
+﻿@using panictheorem.Helpers
+@model panictheorem.Models.BlogModel
+
+@{
+    ViewBag.Title = "Panic Theorem Blog Archive";
+}
+@section Head{
+    <meta name="description" content="Archive for the PanicTheorem.NET blog by Andrew Pineau, C# and .NET developer. Check out the archive for tutorials on C#, ASP.NET MVC, Entity Framework and more!" />
+}
+@Html.Partial("_HeaderSection", Model.HeaderSection)
+
+<section class="white-section">
+    <div id="blog-listing-area">
+        <section id="blog-listing">
+            @Html.MonthYearListing(Model)
+        </section>
+        @Html.Partial("_BlogPagingSection", Model.BlogPage)
+    </div>
+    <div id="blog-nav">
+        @Html.Partial("_BlogNav", Model.Labels)
+    </div>
+</section>

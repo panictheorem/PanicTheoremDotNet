@@ -1,0 +1,18 @@
+﻿@model panictheorem.Domain.Entities.Section
+
+<section class="white-section">
+    <div class="section-content">
+        @if (Model.Title != null)
+        {
+            <h1 class="title">@Model.Title</h1>
+        }
+        <p>@Html.Raw(Model.Body)</p>
+
+        @if (Model.Button != null)
+        {
+            <div class="button-area">
+                <a href="@Model.Button.Link"><div class="panic-button white-button">@Model.Button.ButtonText</div></a>
+            </div>
+        }
+    </div>
+</section>

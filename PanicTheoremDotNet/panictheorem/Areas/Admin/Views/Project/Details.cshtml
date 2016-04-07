@@ -1,0 +1,98 @@
+﻿@model panictheorem.Domain.Entities.Project
+
+@{
+    ViewBag.Title = "Project Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesignDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesignDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrlSegment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrlSegment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BriefDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BriefDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DetailedDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DetailedDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SmallImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SmallImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LargeImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LargeImageUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SortOrder)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

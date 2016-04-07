@@ -1,0 +1,37 @@
+﻿@model panictheorem.Models.BlogModel
+
+@{
+    ViewBag.Title = "Panic Theorem Blog - " + Model.SelectedLabel.Name;
+}
+@section Head{
+    <meta name="description" content="PanicTheorem.NET blog posts about @Model.SelectedLabel.Name. Check out the PanicTheorem.NET blog for tutorials on C#, ASP.NET MVC, Entity Framework and more!" />
+}
+<section class="transparent-section">
+    <div class="section-content">
+        <h1 class="title">Panic Theorem Blog</h1>
+        <div class="underscore"></div>
+        <h1 class="subtitle">@Model.SelectedLabel.Name</h1>
+    </div>
+</section>
+<section class="white-section">
+    <div id="blog-listing-area">
+
+        @if (Model.BlogPage.BlogPosts.Count() > 0)
+        {
+            foreach (var blogPost in Model.BlogPage.BlogPosts)
+            {   <section id="blog-listing">
+                    @Html.Partial("_BlogPostDetails", blogPost)
+                </section>
+            }
+            @Html.Partial("_BlogPagingSection", Model.BlogPage)
+        }
+        else
+        {
+            <h3>Unfortunately, I have yet to finish any blog posts for this category. However, I am continuously toiling away on articles so check back soon.</h3>
+        }
+
+    </div>
+    <div id="blog-nav">
+        @Html.Partial("_BlogNav", Model.Labels)
+    </div>
+</section>

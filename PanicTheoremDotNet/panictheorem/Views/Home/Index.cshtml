@@ -1,0 +1,118 @@
+﻿@model panictheorem.Models.HomeModel
+@{
+    ViewBag.Title = "PanicTheorem.NET";
+}
+@section Head{
+    <meta name="description" content="PanicTheorem.NET is the blog and portfolio website of Andrew Pineau, C# and .NET developer. Check out the blog for tutorials on C#, ASP.NET MVC, Entity Framework and more!" />
+}
+@section Scripts{
+    <script src="~/Scripts/CubeAnimation.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            console.log('check is mobile');
+        var isMobile = {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function () {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+            }
+        };
+        if (isMobile.any()) {
+            console.log('is mobile');
+            $('#hero-image').css('background-attachment', 'scroll');
+        }
+        });
+    </script>
+}
+
+@if (Model.HeaderSection != null)
+{
+    @Html.Partial("_HeroSection", Model.HeaderSection)
+}
+@if (Model.MainSection != null)
+{
+    @Html.Action("MainSection", "Section", new { section = Model.MainSection, functionName = "Main" })
+}
+<section class="highlight-section">
+    <div class="section-content">
+        <h1 class="title">Highlights</h1>
+        <div class="underscore"></div>
+        <div class="row">
+            @foreach (var highlight in Model.Highlights)
+            {
+                <div class="col-md-4 highlight">
+                    <img class="highlight-image" src="@highlight.ImageUrl" />
+                    <h2>@Html.DisplayFor(m => highlight.Heading)</h2>
+                    <div class="highlight-body">
+                        @Html.DisplayFor(m => highlight.Body)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+@foreach (var contentSection in Model.ContentSections)
+{
+    @Html.Partial("_ContentSection", contentSection)
+}
+<section class="white-section">
+    <div class="section-detail">
+        <div class="row">
+            <div class="col-md-5">
+                <canvas id="logoBounce" width="280" height="350">Your browser doesn't support the HTML5 canvas. Find a more HTML5 complient browser because you are missing out. :D.</canvas>
+            </div>
+            <div class="col-md-7">
+                <div>
+                    <div id="social-media" class="section-content">
+                        <h1 class="title">Keep In Touch</h1>
+                        <div class="underscore"></div>
+                        <h3>Connect with me on social media.</h3>
+                        <table id="social-media-icons">
+                            <tr>
+                                @foreach (var icon in Model.SocialMediaIcons)
+                                {
+                                    <td>
+                                        <a href="@icon.Link"><img src="@icon.ImageUrl" /></a>
+                                    </td>
+                                }
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        var highlightDisplayed = false;
+        $('.highlight-image').each(function () {
+            $(this).hide();
+        });
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= $(".highlight-section").position().top - 400) {
+
+                if (!highlightDisplayed) {
+                    $('.highlight-image').each(function () {
+                        $(this).show(2000);
+                    });
+                    highlightDisplayed = true;
+                }
+            }
+        })
+    });
+</script>

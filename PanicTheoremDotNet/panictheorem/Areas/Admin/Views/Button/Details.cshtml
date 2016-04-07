@@ -1,0 +1,58 @@
+﻿@using panictheorem.Domain.Entities
+@model panictheorem.Areas.Admin.Models.ButtonModel
+
+@{
+    ViewBag.Title = "Button Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Button</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.ProjectId)
+        </dt>
+        @{
+            if (Model.Project != null)
+            {
+                <dd>@Model.Project.Title</dd>
+            }
+            else
+            {
+                <dd>None</dd>
+            }
+
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.ButtonText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Button.ButtonText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Button.Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.ButtonType)
+        </dt>
+
+        <dd>
+            @((ButtonType)Model.Button.ButtonType)
+        </dd>
+
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Button.ButtonId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

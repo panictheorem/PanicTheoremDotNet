@@ -1,0 +1,21 @@
+﻿<div class="navbar navbar-default navbar-fixed-top">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        @Html.ActionLink("PanicTheorem.Net", "Index", "Home", new { area = ""}, new { @class = "navbar-brand brand-name" })
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Blog", "Index", "Blog")</li>
+            <li>@Html.ActionLink("Project", "Index", "Project")</li>
+            <li>@Html.ActionLink("Section", "Index", "Section")</li>
+            <li>@Html.ActionLink("Button", "Index", "Button")</li>
+            <li>@Html.ActionLink("Errors", "Index", "Elmah")</li>
+        </ul>
+    </div>
+</div>
+

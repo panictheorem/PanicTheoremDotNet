@@ -1,0 +1,24 @@
+﻿@model panictheorem.Models.SectionModel
+
+<section class="purple-section centered-section">
+    <div class="section-content">
+        <div class="brace">static void @Model.FunctionName@**@()</div>
+        <div class="brace">{</div>
+        @if(Model.Section.Title != null)
+        {
+        <h1 class="title">@Model.Section.Title</h1>
+        <div class="underscore"></div>
+        }
+        <div class="section-detail">
+            <h2>@Html.Raw(Model.Section.Body)</h2>
+            @if (Model.Section.Button != null)
+            {
+                <a href="@Model.Section.Button.Link"><div class="panic-button purple-button">@Model.Section.Button.ButtonText</div></a>
+            }
+        </div>
+        <div class="brace">}</div>
+    </div>
+</section>
+
+
+

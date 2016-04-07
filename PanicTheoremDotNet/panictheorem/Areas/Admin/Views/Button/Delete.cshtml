@@ -1,0 +1,63 @@
+﻿@using panictheorem.Domain.Entities
+@model panictheorem.Areas.Admin.Models.ButtonModel
+
+@{
+    ViewBag.Title = "Delete Button";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Button</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.ProjectId)
+        </dt>
+            @{
+                if (Model.Project != null)
+                {
+                    <dd>@Model.Project.Title</dd>
+                }
+                else
+                {
+                    <dd>None</dd>
+                }
+
+            }
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.ButtonText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Button.ButtonText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Button.Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.ButtonType)
+        </dt>
+
+        <dd>
+            @((ButtonType)Model.Button.ButtonType)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

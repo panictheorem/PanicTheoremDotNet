@@ -1,0 +1,33 @@
+﻿@using panictheorem.Models
+@model PortfolioModel
+
+@{
+    ViewBag.Title = "PanicTheorem.NET - Portfolio";
+}
+@section Head{
+    <meta name="description" content="Take a look at some of the projects by Andrew Pineau, C# and .NET developer. And be sure to check out the blog for tutorials on C#, ASP.NET MVC, Entity Framework and more!" />
+}
+@if (Model.HeaderSection != null)
+{
+    @Html.Partial("_HeaderSection", Model.HeaderSection)
+}
+@if (Model.MainSection != null)
+{
+    @Html.Action("MainSection", "Section", new { section = Model.MainSection, functionName = "Portfolio" })
+}
+@foreach (var project in Model.Projects)
+{
+    <section class="white-section centered-section">
+        <div class="section-content">
+            <h1 class="title">@project.Title</h1>
+            <div class="underscore"></div>
+            <h4>
+                @project.BriefDescription
+            </h4>
+            <img class="small-project-image" src="@project.SmallImageUrl" />
+            @Html.ActionLink("View Details", "Projects", new { urlSegment = project.UrlSegment }, new { @class = "panic-button white-button" })
+        </div>
+    </section>
+}
+
+

@@ -1,0 +1,9 @@
+﻿@model ICollection<panictheorem.Domain.Entities.Label>
+
+<section class="centered-section">
+    <div class="title">Explore</div>
+    <div class="underscore"></div>
+    <a href="@Url.Action("Archive", "Blog")"><div class="panic-button green-button">Archive</div></a>
+    <h3>Labels</h3>
+    @Html.DisplayFor(model => model, "Labels")
+</section>

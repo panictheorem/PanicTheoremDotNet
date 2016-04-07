@@ -1,0 +1,62 @@
+﻿@using panictheorem.Domain.Entities
+@model panictheorem.Areas.Admin.Models.ButtonListModel
+
+@{
+    ViewBag.Title = "Button Administration";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Buttons.FirstOrDefault().ProjectId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Buttons.FirstOrDefault().ButtonText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Buttons.FirstOrDefault().Link)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Buttons.FirstOrDefault().ButtonType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Buttons)
+    {
+        <tr>
+            @{
+                var project = Model.Projects.Where(p => p.ProjectId == item.ProjectId).FirstOrDefault();
+                if (project != null)
+                {
+                    <td>@project.Title</td>
+                }
+                else
+                {
+                    <td>None</td>
+                }
+
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.ButtonText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @((ButtonType)item.ButtonType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ButtonId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ButtonId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ButtonId })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,30 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "PanicTheorem.NET - Error";
+    Layout = "_Layout.cshtml";
+}
+
+@section Scripts{
+    <script src="~/Scripts/CubeAnimation.js"></script>
+}
+<div class="purple-spacer-top"></div>
+<section class="purple-section centered-section">
+    <div class="section-content">
+        <div class="brace">static void Error()</div>
+        <div class="brace">{</div>
+            <h1 class="title">Oops!</h1>
+            <div class="underscore"></div>
+        <div class="section-detail">
+            <h2>An Error has occurred.</h2>
+            <h3>If the issue persists, you can <a href="/Contact">report</a> the problem to the administrator.</h3>
+        </div>
+        <div class="brace">}</div>
+    </div>
+</section>
+<section class="white-section">
+    <div class="section-content">
+        <canvas id="logoBounce" width="280" height="350">Your browser doesn't support the HTML5 canvas. Find a more HTML5 complient browser because you are missing out. :D.</canvas>
+    </div>
+</section>
+

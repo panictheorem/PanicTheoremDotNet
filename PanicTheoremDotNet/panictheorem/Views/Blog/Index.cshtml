@@ -1,0 +1,32 @@
+﻿@model panictheorem.Models.BlogModel
+@{
+    ViewBag.Title = "Panic Theorem Blog";
+}
+@section Head{
+    <meta name="description" content="Check out the PanicTheorem.NET blog for tutorials on C#, ASP.NET MVC, Entity Framework, .NET and more!" />
+}
+@if (Model.HeaderSection != null)
+{
+    @Html.Partial("_HeaderSection", Model.HeaderSection)
+}
+@if (Model.MainSection != null)
+{
+    @Html.Action("MainSection", "Section", new { section = Model.MainSection, functionName = "Blog" })
+}
+<section class="white-section">
+    <div id="blog-listing-area">
+        <section id="blog-listing">
+            <div class="title">Latest Posts</div>
+            @foreach (var blogPost in Model.BlogPosts)
+            {
+                @Html.Partial("_BlogPostDetails", blogPost)
+            }
+        </section>
+    </div>
+    <div id="blog-nav">
+        @Html.Partial("_BlogNav", Model.Labels)
+    </div>
+</section>
+
+
+

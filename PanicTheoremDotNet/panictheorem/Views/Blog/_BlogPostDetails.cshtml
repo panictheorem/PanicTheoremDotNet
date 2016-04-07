@@ -1,0 +1,11 @@
+﻿@model panictheorem.Domain.Entities.BlogPost
+
+<div class="blog-post-details">
+    <h2>@Html.ActionLink(Model.Title, "BlogPost", "Blog", new { urlSegment = Model.UrlSegment }, null)</h2>
+    <b>@Model.PostingDate.ToLongDateString()</b>
+    <p>Author: @Model.Author.FirstName @Model.Author.LastName</p>
+    @Html.DisplayFor(p => p.Labels)
+</div>
+
+
+

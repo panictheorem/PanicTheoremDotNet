@@ -1,0 +1,51 @@
+﻿@model IEnumerable<panictheorem.Domain.Entities.BlogPost>
+
+@{
+    ViewBag.Title = "Blog Post Administration";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") | @Html.ActionLink("Label Administration", "Index", "Label") | @Html.ActionLink("Author Administration", "Index", "Author")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrlSegment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.FirstName) @Html.DisplayFor(modelItem => item.Author.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrlSegment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BlogPostId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BlogPostId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BlogPostId })
+        </td>
+    </tr>
+}
+
+</table>

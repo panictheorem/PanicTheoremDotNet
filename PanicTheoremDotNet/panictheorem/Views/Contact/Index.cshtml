@@ -1,0 +1,48 @@
+﻿@using panictheorem.Models
+@model ContactModel
+
+@{
+    ViewBag.Title = "PanicTheorem.NET - Contact";
+}
+@section Head{
+    <meta name="description" content="PanicTheorem.NET is the blog and portfolio website of Andrew Pineau, C# and .NET developer. Feel free to contact me and be sure to check out the blog for tutorials on C#, ASP.NET MVC, Entity Framework and more!" />
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+}
+<div class="purple-spacer-top"></div>
+@if (Model.MainSection != null)
+{
+    @Html.Action("MainSection", "Section", new { section = Model.MainSection, functionName = "Contact" })
+}
+<div id="loading-area" class="load" style="display:none;">
+    <div class='alert alert-info'><strong>Sending</strong></div>
+</div>
+<div id="message-area"></div>
+<section class="white-section">
+    <div class="section-content">
+        <div id="form-area">
+            @Html.Partial("_ContactForm", Model.ContactForm)
+        </div>
+    </div>
+</section>
+<section class="white-section">
+    <div class="section-detail">
+        <div class="section-content">
+            <canvas id="logoBounce" width="280" height="350">Your browser doesn't support the HTML5 canvas. Find a more HTML5 complient browser because you are missing out. :D.</canvas>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+            $("#logoBounce").hide();
+            function Begin() {
+                $("#form-area").hide();
+                $("#logoBounce").show();
+            }
+            function Failure() {
+                $('#message-area').html('<div class="alert alert-danger"><strong>Error!</strong> There was a problem connecting to the server and your message has not been sent. Please try again later or email me at andrewpineau at hotmail dot com.</div>');
+            }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryajax")
+    <script src="~/Scripts/CubeAnimation.js"></script>
+}

@@ -1,0 +1,78 @@
+﻿@model panictheorem.Models.BlogPostModel
+@{
+    ViewBag.Title = Model.BlogPost.Title;
+}
+@Styles.Render("~/Content/csharp")
+@section Head{
+    <meta property="og:url" content="http://www.panictheorem.net/blog/@Model.BlogPost.UrlSegment" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@Model.BlogPost.Title" />
+    <meta property="og:description" content="Learn to C# and .Net like a Pro." />
+    <meta name="description" content="Check out the PanicTheorem.NET blog for tutorials on C#, ASP.NET MVC, Entity Framework and more!" />
+}
+@if (Model.HeaderSection != null)
+{
+    <section class="transparent-section">
+        <div class="section-content">
+            <h1 class="title">@Model.HeaderSection.Title</h1>
+            <div class="underscore"></div>
+            <h2 class="subtitle">@Html.Raw(Model.HeaderSection.Body)</h2>
+        </div>
+    </section>
+}
+
+@if (Model.BlogPost != null)
+{
+    <section id="blog-post">
+        <div class="blog-info">
+            <div class="title">@Model.BlogPost.Title</div>
+            <b>@Model.BlogPost.Author.FirstName @Model.BlogPost.Author.LastName</b>
+            <p>@Model.BlogPost.PostingDate.ToLongDateString()</p>
+            @Html.DisplayFor(m => m.BlogPost.Labels)
+        </div>
+        <div class="blog-share-btns">
+            <div id="fb-root"></div>
+            <script>
+                window.fbAsyncInit = function () {
+                    FB.init({
+                        appId: '1120612721306948',
+                        xfbml: true,
+                        version: 'v2.5'
+                    });
+                };
+
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) { return; }
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+            <div class="blog-share-btn"><div class="fb-like" data-href="http://www.panictheorem.net/Blog/@Model.BlogPost.UrlSegment" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></div>
+            <div class="blog-share-btn">
+                <a href="https://twitter.com/share" class="twitter-share-button" {count} data-url="http://www.panictheorem.net/Blog/@Model.BlogPost.UrlSegment">Tweet</a>
+                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+            </div>
+            <div class="blog-share-btn">
+                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                <script type="IN/Share" data-url="http://www.panictheorem.net/Blog/@Model.BlogPost.UrlSegment" data-counter="right">
+                </script>
+            </div>
+            <div class="blog-share-btn">
+                <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+                <!-- Place this tag where you want the share button to render. -->
+                <div class="g-plus" data-action="share" data-anotations="none" data-width="80" data-href="http://www.panictheorem.net/Blog/@Model.BlogPost.UrlSegment"></div>
+            </div>
+        </div>
+        <div class="blog-content">
+            @Html.Raw(Model.BlogPost.Content)
+        </div>
+        <div class="blog-comments">
+            <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+            <div class="fb-comments" data-href="http://www.panictheorem.net/blog/@Model.BlogPost.UrlSegment" data-numposts="5"></div>
+        </div>
+    </section>
+}
+

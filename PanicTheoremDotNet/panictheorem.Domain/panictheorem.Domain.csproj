@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3B6A229B-A690-45BE-A43E-3C0F54E20C36}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>panictheorem.Domain</RootNamespace>
+    <AssemblyName>panictheorem.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IEntity.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IUnitOfWork.cs" />
+    <Compile Include="Concrete\Repository.cs" />
+    <Compile Include="Concrete\BlogPostRepository.cs" />
+    <Compile Include="Concrete\PanicTheoremDbContext.cs" />
+    <Compile Include="Concrete\UnitOfWork.cs" />
+    <Compile Include="Entities\Author.cs" />
+    <Compile Include="Entities\BlogPost.cs" />
+    <Compile Include="Entities\BlogPostContent.cs" />
+    <Compile Include="Entities\Button.cs" />
+    <Compile Include="Entities\Highlight.cs" />
+    <Compile Include="Entities\Label.cs" />
+    <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\Section.cs" />
+    <Compile Include="Entities\SocialMediaIcon.cs" />
+    <Compile Include="Entities\WebPage.cs" />
+    <Compile Include="Migrations\201603182059497_InitailMigration.cs" />
+    <Compile Include="Migrations\201603182059497_InitailMigration.Designer.cs">
+      <DependentUpon>201603182059497_InitailMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603182103141_BlogPostSplit.cs" />
+    <Compile Include="Migrations\201603182103141_BlogPostSplit.Designer.cs">
+      <DependentUpon>201603182103141_BlogPostSplit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603201549235_BlogPostFixed.cs" />
+    <Compile Include="Migrations\201603201549235_BlogPostFixed.Designer.cs">
+      <DependentUpon>201603201549235_BlogPostFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603182059497_InitailMigration.resx">
+      <DependentUpon>201603182059497_InitailMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603182103141_BlogPostSplit.resx">
+      <DependentUpon>201603182103141_BlogPostSplit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603201549235_BlogPostFixed.resx">
+      <DependentUpon>201603201549235_BlogPostFixed.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

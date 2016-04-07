@@ -1,0 +1,35 @@
+﻿@model panictheorem.Models.ContactForm
+
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "message-area",
+        LoadingElementId = "loading-area",
+        LoadingElementDuration = 1000,
+        Url = Url.Action("Submit"),
+        OnBegin = "Begin",
+        OnFailure = "Failure"
+    };
+}
+    @using (Ajax.BeginForm("Submit", ajaxOptions))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Message)
+            @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Message)
+        </div>
+        <div class="g-recaptcha" data-sitekey="6LcH4BYTAAAAAFxNBLJv8oidnU7z3sivcQqqkVQ4"></div>
+        <input type="submit" value="Send" class="panic-button white-button" />
+    }
+

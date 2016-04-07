@@ -1,0 +1,61 @@
+﻿@model panictheorem.Areas.Admin.Models.ButtonModel
+
+@{
+    ViewBag.Title = "Edit Button";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Button</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Button.ButtonId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Button.ProjectId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Button.ProjectId, Model.ProjectSelectList, "None")
+                @Html.ValidationMessageFor(model => model.Button.ProjectId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Button.ButtonText, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Button.ButtonText)
+                @Html.ValidationMessageFor(model => model.Button.ButtonText)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Button.Link, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Button.Link)
+                @Html.ValidationMessageFor(model => model.Button.Link)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Button.ButtonType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Button.ButtonType, Model.ButtonTypeSelectList)
+                @Html.ValidationMessageFor(model => model.Button.ButtonType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

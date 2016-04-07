@@ -1,0 +1,75 @@
+﻿@using panictheorem.Domain.Entities
+@model panictheorem.Domain.Entities.Section
+
+@{
+    ViewBag.Title = "Section Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Section</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Button.ButtonText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Button.ButtonText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebPageId)
+        </dt>
+
+        <dd>
+            @((WebPages)Model.WebPageId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionType)
+        </dt>
+
+        <dd>
+            @((SectionType)Model.SectionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SortOrder)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SectionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<panictheorem.Domain.Entities.Label>
+
+<div class="blog-labels">
+    @foreach (var label in Model.OrderByDescending(l => l.BlogPosts.Count))
+    {
+        @Html.ActionLink(label.Name + " (" + label.BlogPosts.Count + ")", "Labels", "Blog", new { urlSegment = label.UrlSegment }, new { @class = "blog-label"})
+    }
+</div>

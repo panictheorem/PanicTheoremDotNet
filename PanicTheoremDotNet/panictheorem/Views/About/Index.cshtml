@@ -1,0 +1,20 @@
+﻿@using panictheorem.Models
+@model AboutModel
+@{
+    ViewBag.Title = "PanicTheorem.NET - About";
+}
+@section Head{
+    <meta name="description" content="PanicTheorem.NET is the blog and portfolio website of Andrew Pineau, C# and .NET developer. Check out the blog for tutorials on C#, ASP.NET MVC, Entity Framework and more!" />
+}
+@if (Model.HeaderSection != null)
+{
+    @Html.Partial("_HeaderSection", Model.HeaderSection)
+}
+@if (Model.MainSection != null)
+{
+     @Html.Action("MainSection", "Section", new { section = Model.MainSection, functionName = "About" })
+}
+@foreach (var contentSection in Model.ContentSections)
+{
+    @Html.Partial("_ContentSection", contentSection)
+}

@@ -1,0 +1,79 @@
+﻿@model panictheorem.Areas.Admin.Models.BlogPostModel
+
+@{
+    ViewBag.Title = "Edit Blog Post";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>BlogPost</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.BlogPost.BlogPostId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BlogPost.AuthorId, "Author", new { @class = "control-label col-md-2", required = "required" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.BlogPost.AuthorId, (SelectList)ViewBag.AuthorId, new { required = "required" })
+                @Html.ValidationMessageFor(model => model.BlogPost.AuthorId)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BlogPost.PostingDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BlogPost.PostingDate)
+                @Html.ValidationMessageFor(model => model.BlogPost.PostingDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BlogPost.Title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BlogPost.Title)
+                @Html.ValidationMessageFor(model => model.BlogPost.Title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BlogPost.Content, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.BlogPost.Content, new { @class = "content-area" })
+                @Html.ValidationMessageFor(model => model.BlogPost.Content)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BlogPost.UrlSegment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BlogPost.UrlSegment)
+                @Html.ValidationMessageFor(model => model.BlogPost.UrlSegment)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LabelList, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model => model.LabelList, (SelectList)ViewBag.Labels)
+                @Html.ValidationMessageFor(model => model.LabelList)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,54 @@
+﻿@model panictheorem.Models.ProjectModel
+@{
+    ViewBag.Title = @Model.Project.Title;
+}
+@section Head{
+    <meta name="description" content="Andrew Pineau's Portfolio: @Model.Project.Title - @Model.Project.BriefDescription" />
+}
+@if (Model.HeaderSection != null)
+{
+    @Html.Partial("_HeaderSection", Model.HeaderSection)
+}
+<section class="purple-section centered-section">
+    <div class="section-content">
+        <div class="brace">public class Project()</div>
+        <div class="brace">{</div>
+        <div class="section-detail">
+            <h2>@Html.Raw(Model.Project.DetailedDescription)</h2>
+            @foreach (var button in Model.Project.GetAccessButtons())
+            {
+                <a href="@button.Link"><div class="panic-button purple-button">@button.ButtonText</div>&nbsp;</a>
+            }
+        </div>
+        <div class="brace">}</div>
+    </div>
+</section>
+<section class="white-section">
+    <div class="section-content">
+        <h1 class="title">About</h1>
+        <div class="underscore"></div>
+        <div class="section-detail">
+            <p>
+                @Html.Raw(Model.Project.ProjectDetails)
+            </p>
+            <img class="large-project-image" src="@Model.Project.LargeImageUrl" />
+        </div>
+    </div>
+</section>
+<section class="white-section">
+    <div class="section-content">
+        <h1 class="title">Technical Details</h1>
+        <div class="underscore"></div>
+        <div class="section-detail">
+            <p>
+                @Html.Raw(Model.Project.DesignDetails)
+            </p>
+            <div class="button-area">
+                @foreach (var button in Model.Project.GetSourceButtons())
+                {
+                    <a href="@button.Link"><div class="panic-button white-button">@button.ButtonText</div></a>
+                }
+            </div>
+        </div>
+    </div>
+</section>

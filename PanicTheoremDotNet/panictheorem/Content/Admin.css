@@ -1,0 +1,28 @@
+﻿/*Admin Style*/
+
+#admin-wrapper {
+    width: 90%;
+    margin: auto;
+}
+
+    #admin-wrapper input[type='text'],
+    #admin-wrapper select,
+    #admin-wrapper textarea,
+    #admin-wrapper input[type='date'] {
+        min-width: 300px;
+    }
+
+    #admin-wrapper .content-area {
+        width: 100%;
+        height: 300px;
+    }
+
+    #admin-wrapper #home-content {
+        width: 100%;
+        text-align: center;
+    }
+
+        #admin-wrapper #home-content #logo {
+            width: 70%;
+            margin: auto;
+        }

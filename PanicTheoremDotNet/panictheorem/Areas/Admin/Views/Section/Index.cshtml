@@ -1,0 +1,58 @@
+﻿@using panictheorem.Domain.Entities
+@model IEnumerable<panictheorem.Domain.Entities.Section>
+
+@{
+    ViewBag.Title = "Section Administration";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") | @Html.ActionLink("Highlight Administration", "Index", "Highlight") | @Html.ActionLink("Social Media Icon Administration", "Index", "SocialMediaIcon")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().SortOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Button.ButtonText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WebPageId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SectionType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SortOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Button.ButtonText)
+        </td>
+        <td>
+            @((WebPages)item.WebPageId)
+        </td>
+        <td>
+            @((SectionType)item.SectionType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SectionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SectionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SectionId })
+        </td>
+    </tr>
+}
+
+</table>
